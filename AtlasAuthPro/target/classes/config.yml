@@ -1,0 +1,184 @@
+# AtlasAuthPro Configuration v2.0.2
+# Latest Paper 1.21.1 (build 26.1.2) Compatible
+
+database:
+  type: SQLite # SQLite or MySQL
+  host: localhost
+  port: 3306
+  database: atlasauth
+  username: root
+  password: ''
+  file: auth.db
+
+security:
+  min-password-length: 6
+  max-password-length: 32
+  require-special-chars: false
+  require-numbers: false
+  bcrypt-work-factor: 12
+  max-login-attempts: 3
+  lockout-time: 300 # seconds (5 minutes)
+  session-duration: 86400 # 24 hours in seconds
+  ip-session-binding: false
+  
+  # Player Restrictions (before login)
+  blindness-effect: true
+  freeze-player: true
+  block-chat: true
+  block-commands: true
+  block-movement: true
+  block-building: true
+  block-damage: true
+  block-interactions: true
+
+messages:
+  prefix: "&8[&3AtlasAuth&8] &7"
+  
+  # Join Messages
+  join-title: "&3&lATLAS AUTH PRO"
+  join-subtitle: "&7Please login or register"
+  join-actionbar: "&eUse &a/login &eor &a/register"
+  
+  # Success Messages
+  login-success-title: "&a&lWELCOME BACK!"
+  login-success-subtitle: "&7Enjoy your stay"
+  register-success-title: "&a&lREGISTERED!"
+  register-success-subtitle: "&7Account created successfully"
+  
+  # Error Messages
+  not-logged-in: "&cPlease login or register first!"
+  wrong-password: "&cWrong password!"
+  not-registered: "&cYou are not registered!"
+  already-registered: "&cYou are already registered!"
+  passwords-not-match: "&cPasswords do not match!"
+  password-too-short: "&cPassword must be at least 6 characters!"
+  account-locked: "&cAccount locked! Too many failed attempts."
+  
+  # Admin Messages
+  admin-no-permission: "&cYou need atlasauth.admin permission!"
+  admin-player-not-found: "&cPlayer not found!"
+  admin-password-reset: "&aPassword reset for %player%!"
+  admin-force-logout: "&aForce logged out %player%!"
+
+admin-panel:
+  title: "&8AtlasAuthPro Admin"
+  rows: 6
+  items-per-page: 28
+  auto-refresh: 5 # seconds
+  show-player-heads: true
+  show-offline-players: true
+
+features:
+  # Visual Features
+  title-messages: true
+  actionbar-messages: true
+  sound-effects: true
+  particle-effects: false
+  
+  # Security Features
+  password-hashing: true
+  session-system: true
+  ip-logging: true
+  login-attempt-tracking: true
+  
+  # Admin Features
+  gui-admin-panel: true
+  console-commands: true
+  player-management: true
+  password-reset-system: true
+  
+  # Player Features
+  auto-login-sessions: true
+  remember-me: false
+  password-strength-meter: true
+
+sounds:
+  login-success: "ENTITY_PLAYER_LEVELUP"
+  login-fail: "ENTITY_ENDERMAN_TELEPORT"
+  register-success: "ENTITY_PLAYER_LEVELUP"
+  account-locked: "ENTITY_ENDER_DRAGON_GROWL"
+
+logging:
+  debug: false
+  log-logins: true
+  log-registrations: true
+  log-password-changes: true
+  log-admin-actions: true
+  log-failed-attempts: true
+  file-logging: true
+  console-logging: true
+
+performance:
+  cache-players: true
+  cache-time: 300 # seconds
+  async-database: true
+  connection-pool-size: 10
+  cleanup-interval: 300 # seconds
+
+updates:
+  check-for-updates: true
+  auto-download: false
+  notify-on-join: true
+
+migration:
+  enabled: true
+  provider: auto # auto, nlogin, openlogin
+  backup: true
+  backup-path: "migration_backups"
+  dry-run: false
+  skip-existing: true
+  convert-passwords: true
+  batch-size: 50
+  max-errors: 10
+
+ui:
+  theme: "modern"
+  use-prefix: true
+  actionbar-reminder: true
+  title-animation: true
+  sounds: true
+
+messages-v2:
+  login-prompt: "&e⚠ &cPlease login with: &a/login <password>"
+  register-prompt: "&e⚠ &cPlease register: &a/register <password> <confirm>"
+  welcome-back: "&a✔ Welcome back, %player%!"
+  registered-success: "&a✔ Registration successful! Welcome to the server."
+  login-success: "&a✔ Login successful!"
+  login-fail: "&c✖ Incorrect password (%attempts% attempts left)"
+  account-locked: "&c🔒 Account locked! Too many failed attempts."
+  admin-action-executed: "&a⚡ Admin action executed"
+  password-reset-success: "&a🔑 Password reset successfully!"
+  force-logout-success: "&c⚡ Player force logged out."
+  gui-watermark: "&7&oAtlas Auth • Secure Authentication"
+  login-usage: "&7Usage: &e/login <password> &7| Alias: &e/l <password>"
+  register-usage: "&7Usage: &e/register <password> <confirm> &7| Alias: &e/reg <password> <confirm>"
+
+discord-2fa:
+  enabled: false
+  bot-token: ""
+  verify-channel-id: ""
+  token:
+    length: 8
+    expiry-seconds: 120
+    max-attempts: 3
+    characters: "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+  default-enabled: false
+  require-after-failed-attempts: 0
+  dm-message: |
+    ╔══════════════════════════════════════╗
+    ║       🔐 ATLAS AUTH 2FA CODE         ║
+    ╚══════════════════════════════════════╝
+    
+    Hello %player%!
+    
+    Your Minecraft login verification code is:
+    
+        ┌─────────────┐
+        │  %token%    │
+        └─────────────┘
+    
+    This code expires in %expiry% seconds.
+    Do not share this code with anyone!
+    
+    If you didn't request this, please ignore.
+

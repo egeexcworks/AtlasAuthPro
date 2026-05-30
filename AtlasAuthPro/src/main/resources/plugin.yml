@@ -1,0 +1,111 @@
+name: AtlasAuthPro
+version: 2.0.2
+main: com.atlas.auth.AtlasAuthPro
+api-version: '1.21'
+author: AtlasAuth Team
+description: Advanced Authentication System for Minecraft Servers
+
+commands:
+  login:
+    description: Login to your account
+    usage: /<command> <password>
+    aliases: [l]
+    permission: atlasauth.login
+  register:
+    description: Register a new account
+    usage: /<command> <password> <confirm>
+    aliases: [reg]
+    permission: atlasauth.register
+  logout:
+    description: Logout from your account
+    usage: /<command>
+    aliases: [logoff]
+    permission: atlasauth.logout
+  changepassword:
+    description: Change your password
+    usage: /<command> <oldpassword> <newpassword>
+    aliases: [cp, changepass]
+    permission: atlasauth.changepassword
+  resetpassword:
+    description: Reset your password
+    usage: /<command> [token] [newpassword]
+    aliases: [rp, resetpass]
+    permission: atlasauth.resetpassword
+  auth:
+    description: Main auth command
+    usage: /<command> [action] [args]
+    aliases: [atlasauth]
+    permission: atlasauth.use
+  atlasadmin:
+    description: Advanced admin panel for AtlasAuthPro - manage players, reset passwords, view statistics, and perform migrations
+    usage: /<command> [action] [args]
+    aliases: [aa, authadmin, adminpanel]
+    permission: atlasauth.admin
+  2fa:
+    description: Two-factor authentication
+    usage: /<command> [action] [args]
+    aliases: [twofactor, totp]
+    permission: atlasauth.2fa
+  pin:
+    description: Login with PIN
+    usage: /<command> <pin>
+    aliases: [p]
+    permission: atlasauth.pin
+  registerpin:
+    description: Set or register a PIN for quick login
+    usage: /<command> <password> <new_pin>
+    aliases: [setpin, rpin]
+    permission: atlasauth.registerpin
+
+permissions:
+  atlasauth.use:
+    description: Basic use of the auth system
+    default: true
+  atlasauth.login:
+    description: Use the login command
+    default: true
+  atlasauth.register:
+    description: Use the register command
+    default: true
+  atlasauth.logout:
+    description: Use the logout command
+    default: true
+  atlasauth.changepassword:
+    description: Change your password
+    default: true
+  atlasauth.resetpassword:
+    description: Reset your password
+    default: true
+  atlasauth.2fa:
+    description: Access 2FA features
+    default: true
+  atlasauth.pin:
+    description: Login with PIN
+    default: true
+  atlasauth.registerpin:
+    description: Set or register a PIN
+    default: true
+  atlasauth.admin:
+    description: Access admin panel and commands
+    default: op
+  atlasauth.admin.forcelogout:
+    description: Force logout players
+    default: op
+  atlasauth.admin.resetpassword:
+    description: Reset player passwords
+    default: op
+  atlasauth.admin.ban:
+    description: Ban players from auth
+    default: op
+  atlasauth.admin.view:
+    description: View player info
+    default: op
+  atlasauth.admin.reload:
+    description: Reload config
+    default: op
+  atlasauth.admin.migrate:
+    description: Access migration features
+    default: op
+  atlasauth.admin.detect:
+    description: Detect nLogin database
+    default: op
